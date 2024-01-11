@@ -4,7 +4,7 @@ variable "instance_type" {
 }
 
 variable "ami_filter" {
-  descripton "Name filter and owner for AMI"
+  descripton = "Name filter and owner for AMI"
 
   type = object({
     name = string
@@ -12,8 +12,8 @@ variable "ami_filter" {
   })
 
   default = {
-    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
-    owners = ["979382823631"] # Bitnami
+    name = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
+    owner = ["979382823631"] # Bitnami
   }
 }
 
@@ -32,11 +32,11 @@ variable "environment" {
 }
 
 variable "asg_min_size" {
-  desription = "Minumim number of instances"
+  description = "Minumim number of instances"
   default = 1
 }
 
 variable "asg_max_size" {
-  desription = "Maximum number of instances"
+  description = "Maximum number of instances"
   default = 2
 }
