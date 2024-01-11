@@ -42,18 +42,18 @@ module "autoscaling" {
   max_size = 2
 
   vpc_zone_identifier = module.blog_vpc.public_subnets
-  target_group_arns = module.blog_alb.target_group_arns
+  target_group_arns = module.blog-alb.target_group_arns
   security_groups = [module.blog.security_group_id]
 
   image_id      = data.aws_ami.app_ami.id
   instance_type = var.instance_type
 }
 
-module "blog_alb" {
+module "blog-alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
-  name = "blog_alb"
+  name = "blog-alb"
 
   load_balancer_type = "application"
 
