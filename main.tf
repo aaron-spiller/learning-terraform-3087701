@@ -49,11 +49,11 @@ module "autoscaling" {
   instance_type = var.instance_type
 }
 
-module "blog-alb" {
+module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
-  name = "blog-alb"
+  name = "blog_alb"
 
   load_balancer_type = "application"
 
@@ -67,12 +67,6 @@ module "blog-alb" {
       backend_protocol = "HTTP"
       backend_port     = 80
       target_type      = "instance"
-      targets = {
-        my_target = {
-          target_id = aws_instance.blog.id
-          port = 80
-        }
-      }
     }
   ]
 
